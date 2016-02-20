@@ -1,5 +1,10 @@
-__author__ = 'pvarenik'
+# -*- coding: utf-8 -*-
+from nfs_client import client
 
 
 def main():
-    pass
+    nfs_client = client.NfsClient()
+    nfs_client.connect()
+
+
+main()
