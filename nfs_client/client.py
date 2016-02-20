@@ -11,9 +11,9 @@ class NfsClient():
         self.dirs = []
         self.files = []
         self.files_with_permissions = {}
-        self.writable = []
-        self.readable = []
-        self.executable = []
+        self.rw = []
+        self.rx = []
+        self.r = []
         self.get_all()
         assert os.path.exists(self.path), "path doesn't exist"
 
@@ -26,14 +26,14 @@ class NfsClient():
             for filename in filenames:
                 file = os.path.join(dirname, filename)
                 self.files.append(file)
-                if (os.access(file, os.W_OK)):
-                    self.writable.append(file)
-                elif (os.access(file, os.R_OK)):
-                    self.readable.append(file)
-                elif (os.access(file, os.X_OK)):
-                    self.executable.append(file)
+                perm = int(oct(os.stat(file).st_mode)[-3:])
+                if perm > 555:
+                    self.rw.append(file)
+                elif perm > 444:
+                    self.rx.append(file)
+                elif perm > 333:
+                    self.r.append(file)
 
-            self.files_with_permissions["w"] = self.writable
-            self.files_with_permissions["r"] = self.readable
-            self.files_with_permissions["x"] = self.executable
-            # assert len(self.files) > 0 and len(self.dirs) > 0, "path is empty"
+            self.files_with_permissions["rw"] = self.rw
+            self.files_with_permissions["rx"] = self.rx
+            self.files_with_permissions["r"] = self.r
