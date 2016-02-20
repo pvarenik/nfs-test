@@ -4,7 +4,7 @@ import string
 
 class FilePermissions():
     def __init__(self, files):
-        print "Files permissions tests:"
+        print "\n[ Files permissions tests ]"
         self.flag = True
         self.writable_test(files)
         self.readable_test(files)
@@ -12,7 +12,6 @@ class FilePermissions():
 
     def writable_test(self, files):
         self.flag = True
-        random_str = ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(100))
         for rw in files["rw"]:
             self.try_to_write(rw, True)
             self.try_to_read(rw, True)

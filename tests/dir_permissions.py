@@ -3,7 +3,7 @@ import os
 
 class DirPermissions():
     def __init__(self, dirs):
-        print "Dirs permissions tests:"
+        print "\n[ Dirs permissions tests ]"
         self.flag = True
         self.writable_test(dirs)
         self.readable_test(dirs)

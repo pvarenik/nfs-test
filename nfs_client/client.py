@@ -48,4 +48,3 @@ class NfsClient():
             self.files_with_permissions["rw"] = self.rw
             self.files_with_permissions["rx"] = self.rx
             self.files_with_permissions["r"] = self.r
-        pass
