@@ -1,0 +1,55 @@
+Getting all files and subdirs in /home/pv/share/ directory:
+[/home/pv/share/test_folder]
+/home/pv/share/test.txt
+[/home/pv/share/test_folder/Untitled Folder]
+[/home/pv/share/test_folder/files]
+/home/pv/share/test_folder/Untitled Folder/test_deep.txt
+[/home/pv/share/test_folder/files/can_read]
+[/home/pv/share/test_folder/files/readable]
+[/home/pv/share/test_folder/files/writable]
+[/home/pv/share/test_folder/files/cant_read]
+/home/pv/share/test_folder/files/readable.txt
+/home/pv/share/test_folder/files/writable.txt
+/home/pv/share/test_folder/files/executable.txt
+Directory /home/pv/share/ scanned
+path /home/pv/share/ doesn't exist
+[ Files permissions tests ]
+START: change_modification_time_test
+Try to write string (np1ANhMvJuNUCsOCkZ9JekBgSiGud4kA9xSFtVQbcqJq33BF4kiI8WF5wiYp5LI5Y53Gb8mQeFmOUKUJD8efpvdhui3Xlv35HGPV) to file /home/pv/share/test.txt. Expected: True
+Try to read file /home/pv/share/test.txt. Expected: True
+Try to write string (2EFGE9uQ2RRnfJSQAdRrnaN8m10hHZXFLmBW8kG7y4DAAL9RCFK81HegkMnkJNJQDAyGkoZnq3LsVyawTlyV2PaTWEpYx9jnLO9E) to file /home/pv/share/test_folder/Untitled Folder/test_deep.txt. Expected: True
+Try to read file /home/pv/share/test_folder/Untitled Folder/test_deep.txt. Expected: True
+Try to write string (X7qemfh1w2UbN7KkncNbqYYbk536cADmnS3glLAmzIzAkRWSi5LtfINWHSg8xK6MeEETV8VNqBrispd9y11WdEiPrG5Csqr7avdn) to file /home/pv/share/test_folder/files/writable.txt. Expected: True
+Try to read file /home/pv/share/test_folder/files/writable.txt. Expected: True
+RESULT: writable_test: True
+START: change_modification_time_test
+Try to read file /home/pv/share/test_folder/files/readable.txt. Expected: True
+Try to write string (7pmMi4T15bhsp7THYzwTsR9uURQJPJucScRmNg1v0BKump3HQNZR2HBZqCappASw6cLHhOC7a38WMHLOt9FSZPQODpjX7c1krQjb) to file /home/pv/share/test_folder/files/readable.txt. Expected: False
+RESULT: readable_test: True
+START: change_modification_time_test
+Try to read file /home/pv/share/test_folder/files/readable.txt. Expected: True
+Try to write string (xw5De55VJuqGl8QpOEgJB6swS70tqahuuFKAi5yrwspv1VAPPpsNQ8Nlv1iuQ87kNhWrCZwSmORwDq6jn15ttS5ZSdHU4VL9Pd2O) to file /home/pv/share/test_folder/files/readable.txt. Expected: False
+RESULT: executable_test: True
+[ Dirs permissions tests ]
+START: writable_test
+Try to read dir: /home/pv/share/test_folder/files/cant_read. Expected: False
+RESULT: change_modification_time_test: True
+START: readable_test
+Try to read dir: /home/pv/share/test_folder. Expected: True
+Try to read dir: /home/pv/share/test_folder/Untitled Folder. Expected: True
+Try to read dir: /home/pv/share/test_folder/files. Expected: True
+Try to read dir: /home/pv/share/test_folder/files/can_read. Expected: True
+Try to read dir: /home/pv/share/test_folder/files/readable. Expected: True
+Try to read dir: /home/pv/share/test_folder/files/writable. Expected: True
+RESULT: change_modification_time_test: True
+[ Files attributes tests ]
+START: change_modification_time_test
+Change file /home/pv/share/test.txt modification date from 2016-02-21 16:07:52.379173 to 1975-01-03 03:00:00
+Change file /home/pv/share/test_folder/Untitled Folder/test_deep.txt modification date from 2016-02-21 16:07:52.395173 to 2000-08-09 03:00:00
+Change file /home/pv/share/test_folder/files/writable.txt modification date from 2016-02-21 16:07:52.411173 to 1981-05-17 04:00:00
+RESULT: change_modification_time_test: True
+START: change_access_time_test
+Change file /home/pv/share/test.txt access date from 2009-05-18 03:00:00 to 2003-08-07 03:00:00
+Change file /home/pv/share/test_folder/Untitled Folder/test_deep.txt access date from 2002-06-19 03:00:00 to 2009-08-26 03:00:00
+Change file /home/pv/share/test_folder/files/writable.txt access date from 2002-02-27 02:00:00 to 1981-11-09 03:00:00
+RESULT: change_access_time_test: True
